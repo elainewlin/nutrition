@@ -10,8 +10,11 @@
 	editor.addButton( 'exhibit_button', { 
 		title: 'Add nutritional information', 
 		image: url + '/foodparsed-pear.png',
-		onclick: function() {
-			editor.insertContent(`
+        cmd: 'plugin_command'
+		
+    }); 
+    var insertShortcode = function() {
+        editor.insertContent(`
             <table id="nutritionfacts" class="mceNonEditable">
                 <tbody><tr>
                     <td align="center" class="header">Nutrition Facts</td>
@@ -135,8 +138,33 @@
                 </tr>      
             </tbody></table>
             `);
-		}
-	  }); 
+    }
+    editor.addCommand( 'plugin_command', function() {
+            // Calls the pop-up modal
+            editor.windowManager.open({
+                // Modal settings
+                title: 'Insert Shortcode',
+                width: $( window ).width() * 0.7,
+                // minus head and foot of dialog box
+                height: ($( window ).height() - 36 - 50) * 0.7,
+                inline: 1,
+                id: 'plugin-slug-insert-dialog',
+                buttons: [{
+                    text: 'Insert',
+                    id: 'plugin-slug-button-insert',
+                    class: 'insert',
+                    onclick: function( e ) {
+                        insertShortcode();
+                    },
+                },
+                {
+                    text: 'Cancel',
+                    id: 'plugin-slug-button-cancel',
+                    onclick: 'close'
+                }],
+            });
+
+        });
 	}); 
 
 

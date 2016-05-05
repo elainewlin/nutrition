@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: Custom Quick Styles
+Plugin Name: Test Modal
 Plugin URI: http://www.speckygeek.com
 Description: Add custom styles in your posts and pages content using TinyMCE WYSIWYG editor. The plugin adds a Styles dropdown menu in the visual post editor.
 Based on TinyMCE Kit plug-in for WordPress
@@ -52,8 +52,8 @@ function datapress_buttons() {
 }
 
 function add_plugins($plugin_array){
-	$plugin_array['exhibit_button'] = plugins_url('/button.js', __FILE__); //exhibit_button is the plugin we're going to create
-	$plugin_array['add_file'] = plugins_url('/button.js', __FILE__);
+	$plugin_array['exhibit_button'] = plugins_url('/modal.js', __FILE__); //exhibit_button is the plugin we're going to create
+	$plugin_array['add_file'] = plugins_url('/modal.js', __FILE__);
 	return $plugin_array;
 } //we need to store the js for the button in a file with the name datapress_button_code in the same file as this one
 
@@ -62,4 +62,11 @@ function show_datapress_button($buttons){ //$buttons is an array of buttons that
 	return $buttons;
 }
 
+add_action( 'wp_ajax_plugin_slug_insert_dialog', 'plugin_slug_insert_gistpen_dialog' );
+
+function plugin_slug_insert_gistpen_dialog() {
+    $url = plugins_url('/form.php', __FILE__); 
+    die(include $url);
+
+}
 ?>
