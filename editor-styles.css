@@ -1,0 +1,35 @@
+#nutritionfacts {
+    width:80%;
+}
+#nutritionfacts td { 
+    padding:5px; 
+    padding-top: 0px;
+    padding-bottom:0px;
+}
+#nutritionfacts td.header { 
+    font-size:20pt; 
+}        
+#nutritionfacts div.label { 
+    float:left; 
+}
+#nutritionfacts div.serving { 
+    font-size:10pt; 
+    text-align:center; 
+}
+#nutritionfacts div.weight { 
+    display:inline; 
+}
+#nutritionfacts div.dv { 
+    display:inline; 
+    float:right; 
+}
+
+#nutritionfacts .labellight { 
+    float:left; 
+    padding-left: 10px
+}
+
+#nutritionfacts td.labellight { 
+    float:right; 
+    padding-left: 10px
+}
