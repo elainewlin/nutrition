@@ -15,7 +15,7 @@
     }); 
     var insertShortcode = function() {
         editor.insertContent(`
-            <table id="nutritionfacts" class="mceNonEditable">
+            <table id="nutritionfacts">
                 <tbody><tr>
                     <td align="center" class="header">Nutrition Facts</td>
                 </tr>
@@ -149,6 +149,14 @@
                 height: ($( window ).height() - 36 - 50) * 0.7,
                 inline: 1,
                 id: 'plugin-slug-insert-dialog',
+                body: [
+                    {type: 'textbox',
+                    multiline: true,
+                    minHeight: 400,
+                    name: 'video_id',
+                    label: 'ID do vídeo'
+                        },
+                    ],
                 buttons: [{
                     text: 'Insert',
                     id: 'plugin-slug-button-insert',
