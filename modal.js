@@ -153,8 +153,8 @@
                     {type: 'textbox',
                     multiline: true,
                     minHeight: 400,
-                    name: 'video_id',
-                    label: 'ID do vídeo'
+                    name: 'nutrition',
+                    label: 'Insert nutritional information'
                         },
                     ],
                 buttons: [{
