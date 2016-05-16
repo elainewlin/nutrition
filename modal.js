@@ -140,7 +140,61 @@
             `);
     }
     editor.addCommand( 'plugin_command', function() {
-            // Calls the pop-up modal
+
+         var name = "test";
+    var type = "test";
+    // editor.windowManager.open( {
+    //     title: 'Advert type: ' + name,
+    //     body: [
+    //     {
+    //         type: 'textbox',
+    //         name: 'target',
+    //         label: 'Target',
+    //         autofocus: true
+    //     },
+    //     {
+    //         type: 'checkbox',
+    //         name: 'blank',
+    //         checked: true,
+    //         label: 'Open in new tab'
+    //     },
+    //     {
+    //         type: 'textbox',
+    //         name: 'text',
+    //         label: 'Main text',
+    //         minWidth: '600',
+    //     },
+    //     {
+    //         type: 'listbox',
+    //         name: 'align',
+    //         label: 'Text align',
+    //         maxWidth: 100,
+    //         values: [
+    //             {
+    //                 text: 'Left',
+    //                 value: 'left',
+    //                 icon: 'icon dashicons-align-left'
+    //             },
+    //             {
+    //                 text: 'Right',
+    //                 value: 'right',
+    //                 icon: 'icon dashicons-align-right'
+    //             },
+    //             {
+    //                 text: 'Cenetr',
+    //                 value: 'center',
+    //                 icon: 'icon dashicons-align-center'}
+    //         ]
+    //             }
+    //     ],
+    //     onsubmit: function(e) {
+    //         editor.insertContent('[widget widget_name="TinyMCEAdvWidget" type="' + type + '" target="' + '" blank="' + e.data.blank + '" text="' + e.data.text + '" align="' + e.data.align + '"]');
+    //     }
+    // });
+            //Calls the pop-up modal
+            var alterText = function(e) {
+                return e + "jaklsdjfkld";
+            }
             editor.windowManager.open({
                 // Modal settings
                 title: 'Insert Shortcode',
@@ -157,19 +211,11 @@
                     label: 'Insert nutritional information'
                         },
                     ],
-                buttons: [{
-                    text: 'Insert',
-                    id: 'plugin-slug-button-insert',
-                    class: 'insert',
-                    onclick: function( e ) {
-                        insertShortcode();
-                    },
-                },
-                {
-                    text: 'Cancel',
-                    id: 'plugin-slug-button-cancel',
-                    onclick: 'close'
-                }],
+                onsubmit: function(e) {
+                    console.log(e.data.nutrition);
+                    console.log(alterText(e.data.nutrition));
+                    editor.insertContent('[widget widget_name="TinyMCEAdvWidget" type="' + type + '" target="' + '" blank="' + e.data.blank + '" text="' + e.data.text + '" align="' + e.data.align + '"]');
+                }
             });
 
         });
