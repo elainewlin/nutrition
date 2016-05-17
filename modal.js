@@ -2,9 +2,7 @@
 //Adds a button to the TinyMCE toolbar with the exhibit logo
 (function($) { 
 	//pretty sure that this line adds your function to tinymce's plugin list
-    $("table").click(function() {
-        console.log("Hello world!");
-    })
+
     tinymce.PluginManager.add('exhibit_button', function( editor, url ) {
 	//and this line adds the actual button
 	editor.addButton( 'exhibit_button', { 
@@ -13,7 +11,44 @@
         cmd: 'plugin_command'
 		
     }); 
-    var insertShortcode = function() {
+    String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+    var getSubstring = function(str, char1, char2) {
+        return str.substring(str.lastIndexOf(char1)+1,str.lastIndexOf(char2));
+    }
+    var insertShortcode = function(nutritionString) {
+        var r = ^d+(\.d{1,2})?$;
+        var nutrition = nutritionString.split("\n");
+        console.log(nutrition);
+        for(i in nutrition) {
+            var entry = nutrition[i];
+            console.log(entry);
+            if(entry.contains("Calories")) {
+                calories = entry.match(r);
+                console.log(entry + "SJDKFKLSDJFLKSDJKLF");
+                console.log(calories);
+            }
+        }
+  
+        calories = 123123;
+        fat = 65;
+        fatP = 10;
+        saturated = 20;
+        saturatedP = 10;
+        trans = 1;
+        cholesterol = 300;
+        cholesterolP = 4;
+        sodium = 619
+        sodiumP = 1;
+        carbs = 1;
+        carbsP = 1;
+        fiber = 1;
+        fiberP = 1;
+        sugar = 1;
+        protein = 1;
+        vitaminA = 1;
+        vitaminC = 1;
+        calcium = 1;
+        iron = 1;
         editor.insertContent(`
             <table id="nutritionfacts">
                 <tbody><tr>
@@ -28,10 +63,7 @@
                 <tr>
                     <td>
                         <div class="label"><b>Calories</b>
-                            <span id="calories">230</span>
-                        </div>
-                        <div class="dv">Calories from Fat 
-                            <span id="fat-calories">56</span>
+                            <span id="calories">`+calories+`</span>
                         </div>
                     </td>
                 </tr>
@@ -41,81 +73,81 @@
                 <tr>
                     <td>
                         <div class="label"><b>Total Fat</b> 
-                            <span id="fat-grams">6.2g</span>
+                            <span id="fat-grams">`+fat+`g</span>
                         </div>
                         <div class="dv">
-                            <span id="fat-dv">10%</span>
+                            <span id="fat-dv">`+fatP+`%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="indent">
                         <div class="labellight">Saturated Fat 
-                            <span id="saturated-grams">3.5g</span>
+                            <span id="saturated-grams">`+saturated+`g</span>
                         </div>
                         <div class="dv">
-                            <span id="saturated-dv">17%</span>
+                            <span id="saturated-dv">`+saturatedP+`%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="indent">
                         <div class="labellight"><i>Trans</i> Fat 
-                            <span id="trans-grams">0.0g</span>
+                            <span id="trans-grams">`+trans+`g</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="label"><b>Cholesterol</b> 
-                            <span id="cholesterol-grams">22mg</span>
+                            <span id="cholesterol-grams">`+cholesterol+`mg</span>
                         </div>
                         <div class="dv">
-                            <span id="cholesterol-dv">7%</span>
+                            <span id="cholesterol-dv">`+cholesterolP+`%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="label"><b>Sodium</b> 
-                            <span id="sodium-grams">618mg</span>
+                            <span id="sodium-grams">`+sodium+`mg</span>
                         </div>
                         <div class="dv">
-                            <span id="sodium-dv">26%</span>
+                            <span id="sodium-dv">`+sodiumP+`%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="label"><b>Total Carbohydrates</b> 
-                            <span id="carb-grams">32.2g</span>
+                            <span id="carb-grams">`+carbs+`g</span>
                         </div>
                         <div class="dv">
-                            <span id="carb-dv">11%</span>
+                            <span id="carb-dv">`+carbsP+`%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="indent">
                         <div class="labellight">Dietary Fiber 
-                            <span id="fiber-grams">5.2g</span>
+                            <span id="fiber-grams">`+fiber+`g</span>
                         </div>
                         <div class="dv">
-                            <span id="fiber-dv">21%</span>
+                            <span id="fiber-dv">`+fiberP+`%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="indent">
                         <div class="labellight">Sugars 
-                            <span id="sugar-grams">3.3g</span>
+                            <span id="sugar-grams">`+sugar+`g</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="label"><b>Protein</b> 
-                            <span id="protein-grams">11.4g</span>
+                            <span id="protein-grams">`+protein+`g</span>
                         </div>
                     </td>
                 </tr>
@@ -125,15 +157,15 @@
                 <tr>
                     <td>
                         <div class="label">Vitamin A 
-                            <span id="a-dv">10%</span>
+                            <span id="a-dv">`+vitaminA+`%</span>
                         </div>
-                        <div class="dv">Vitamin C 19%</div>
+                        <div class="dv">Vitamin C `+vitaminC+`%</div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                      <div class="label">Calcium 22%</div>
-                      <div class="dv">Iron 13%</div>
+                      <div class="label">Calcium `+calcium+`%</div>
+                      <div class="dv">Iron `+iron+`%</div>
                     </td>
                 </tr>      
             </tbody></table>
@@ -141,56 +173,6 @@
     }
     editor.addCommand( 'plugin_command', function() {
 
-         var name = "test";
-    var type = "test";
-    // editor.windowManager.open( {
-    //     title: 'Advert type: ' + name,
-    //     body: [
-    //     {
-    //         type: 'textbox',
-    //         name: 'target',
-    //         label: 'Target',
-    //         autofocus: true
-    //     },
-    //     {
-    //         type: 'checkbox',
-    //         name: 'blank',
-    //         checked: true,
-    //         label: 'Open in new tab'
-    //     },
-    //     {
-    //         type: 'textbox',
-    //         name: 'text',
-    //         label: 'Main text',
-    //         minWidth: '600',
-    //     },
-    //     {
-    //         type: 'listbox',
-    //         name: 'align',
-    //         label: 'Text align',
-    //         maxWidth: 100,
-    //         values: [
-    //             {
-    //                 text: 'Left',
-    //                 value: 'left',
-    //                 icon: 'icon dashicons-align-left'
-    //             },
-    //             {
-    //                 text: 'Right',
-    //                 value: 'right',
-    //                 icon: 'icon dashicons-align-right'
-    //             },
-    //             {
-    //                 text: 'Cenetr',
-    //                 value: 'center',
-    //                 icon: 'icon dashicons-align-center'}
-    //         ]
-    //             }
-    //     ],
-    //     onsubmit: function(e) {
-    //         editor.insertContent('[widget widget_name="TinyMCEAdvWidget" type="' + type + '" target="' + '" blank="' + e.data.blank + '" text="' + e.data.text + '" align="' + e.data.align + '"]');
-    //     }
-    // });
             //Calls the pop-up modal
             var alterText = function(e) {
                 return e + "jaklsdjfkld";
@@ -200,21 +182,20 @@
                 title: 'Insert Shortcode',
                 width: $( window ).width() * 0.7,
                 // minus head and foot of dialog box
-                height: ($( window ).height() - 36 - 50) * 0.7,
+                height: $( window ).height() * 0.5,
                 inline: 1,
                 id: 'plugin-slug-insert-dialog',
                 body: [
                     {type: 'textbox',
                     multiline: true,
-                    minHeight: 400,
+                    minHeight: 200,
                     name: 'nutrition',
                     label: 'Insert nutritional information'
                         },
                     ],
                 onsubmit: function(e) {
-                    console.log(e.data.nutrition);
-                    console.log(alterText(e.data.nutrition));
-                    editor.insertContent('[widget widget_name="TinyMCEAdvWidget" type="' + type + '" target="' + '" blank="' + e.data.blank + '" text="' + e.data.text + '" align="' + e.data.align + '"]');
+                   // editor.insertShortcode(e.data.nutrition);
+                    insertShortcode(e.data.nutrition);
                 }
             });
 
