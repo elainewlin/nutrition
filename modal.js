@@ -15,40 +15,40 @@
     var getSubstring = function(str, char1, char2) {
         return str.substring(str.lastIndexOf(char1)+1,str.lastIndexOf(char2));
     }
+
+    var getNum = function(str) {
+        var number = /\d+/;
+        return str.match(number)[0];
+    }
     var insertShortcode = function(nutritionString) {
-        var r = ^d+(\.d{1,2})?$;
-        var nutrition = nutritionString.split("\n");
-        console.log(nutrition);
+        fat = "0.0";
+        fatP = 0;
+        saturated = "0.0";
+        saturatedP = 0;
+        trans = "0.0";
+        cholesterol = 0;
+        cholesterolP = 0;
+        sodium = 0;
+        sodiumP = 0;
+        carbs = "0.0";
+        carbsP = 0;
+        fiber = "0.0";
+        fiberP = 0;
+        sugar = "0.0";
+        protein = "0.0";
+        vitaminA = 0;
+        vitaminC = 0;
+        calcium = 0;
+        iron = 0;
+        var nutrition = nutritionString.split('\n');
         for(i in nutrition) {
             var entry = nutrition[i];
             console.log(entry);
             if(entry.contains("Calories")) {
-                calories = entry.match(r);
-                console.log(entry + "SJDKFKLSDJFLKSDJKLF");
-                console.log(calories);
+                calories = getNum(entry);
             }
         }
   
-        calories = 123123;
-        fat = 65;
-        fatP = 10;
-        saturated = 20;
-        saturatedP = 10;
-        trans = 1;
-        cholesterol = 300;
-        cholesterolP = 4;
-        sodium = 619
-        sodiumP = 1;
-        carbs = 1;
-        carbsP = 1;
-        fiber = 1;
-        fiberP = 1;
-        sugar = 1;
-        protein = 1;
-        vitaminA = 1;
-        vitaminC = 1;
-        calcium = 1;
-        iron = 1;
         editor.insertContent(`
             <table id="nutritionfacts">
                 <tbody><tr>
@@ -191,8 +191,8 @@
                     minHeight: 200,
                     name: 'nutrition',
                     label: 'Insert nutritional information'
-                        },
-                    ],
+                    }
+                ],
                 onsubmit: function(e) {
                    // editor.insertShortcode(e.data.nutrition);
                     insertShortcode(e.data.nutrition);
