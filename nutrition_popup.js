@@ -3,14 +3,14 @@
 (function($) { 
 	//pretty sure that this line adds your function to tinymce's plugin list
 
-    tinymce.PluginManager.add('exhibit_button', function( editor, url ) {
+    tinymce.PluginManager.add('nutrition_button', function( editor, url ) {
 	//and this line adds the actual button
-	editor.addButton( 'exhibit_button', { 
+	editor.addButton( 'nutrition_button', { 
 		title: 'Add nutritional information', 
 		image: url + '/foodparsed-pear.png',
         cmd: 'plugin_command'
-		
     }); 
+
     String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
     var getSubstring = function(str, char1, char2) {
         return str.substring(str.lastIndexOf(char1)+1,str.lastIndexOf(char2));
@@ -42,7 +42,7 @@
 
     }
 
-    var insertShortcode = function(nutritionString) {
+    var insertNutrition = function(nutritionString) {
         nutritionString = nutritionString.replace(/,/g,"");
         fat = "0.0";
         fatP = 0;
@@ -238,13 +238,10 @@
     }
     editor.addCommand( 'plugin_command', function() {
 
-            //Calls the pop-up modal
-            var alterText = function(e) {
-                return e + "jaklsdjfkld";
-            }
+
             editor.windowManager.open({
                 // Modal settings
-                title: 'Insert Shortcode',
+                title: 'Insert nutritional information',
                 width: $( window ).width() * 0.7,
                 // minus head and foot of dialog box
                 height: $( window ).height() * 0.5,
@@ -255,12 +252,11 @@
                     multiline: true,
                     minHeight: 200,
                     name: 'nutrition',
-                    label: 'Insert nutritional information'
+                    label: 'Paste from Google or Calorie Count'
                     }
                 ],
                 onsubmit: function(e) {
-                   // editor.insertShortcode(e.data.nutrition);
-                    insertShortcode(e.data.nutrition);
+                    insertNutrition(e.data.nutrition);
                 }
             });
 
