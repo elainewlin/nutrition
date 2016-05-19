@@ -17,10 +17,33 @@
     }
 
     var getNum = function(str) {
-        var number = /\d+/;
-        return str.match(number)[0];
+        var num = /[^0-9\.]+/;
+        var split = str.split(num);
+        if(split[1] != "") {
+            return split[1];
+        }
+        else {
+            return split[0];
+        }
     }
+
+    var getPercent = function(str) {
+        var parts = str.split("g");
+        var num = getNum(parts[0]);
+        var percent = getNum(parts[1]);
+        return [num, percent];
+    }
+
+    var getVitamins = function(str) {
+        var parts = str.split("%");
+        var num = getNum(parts[0]);
+        var percent = getNum(parts[1]);
+        return [num, percent];
+
+    }
+
     var insertShortcode = function(nutritionString) {
+        nutritionString = nutritionString.replace(/,/g,"");
         fat = "0.0";
         fatP = 0;
         saturated = "0.0";
@@ -40,12 +63,54 @@
         vitaminC = 0;
         calcium = 0;
         iron = 0;
+
         var nutrition = nutritionString.split('\n');
         for(i in nutrition) {
             var entry = nutrition[i];
             console.log(entry);
             if(entry.contains("Calories")) {
                 calories = getNum(entry);
+            }
+            if(entry.contains("Trans")) {
+                trans = getNum(entry);
+            }
+            if(entry.contains("Sugar")) {
+                sugar = getNum(entry);
+            }
+            if(entry.contains("Protein")) {
+                protein = getNum(entry);
+            }
+            if(entry.contains("Total Fat")) {
+                fat = getPercent(entry)[0];
+                fatP = getPercent(entry)[1];
+            }
+            if(entry.contains("Saturated")) {
+                saturated = getPercent(entry)[0];
+                saturatedP = getPercent(entry)[1];
+            }
+            if(entry.contains("Cholesterol")) {
+                cholesterol = getPercent(entry)[0];
+                cholesterolP = getPercent(entry)[1];
+            }
+            if(entry.contains("Sodium")) {
+                sodium = getPercent(entry)[0];
+                sodiumP = getPercent(entry)[1];
+            }
+            if(entry.contains("Carbohydrate")) {
+                carbs = getPercent(entry)[0];
+                carbsP = getPercent(entry)[1];
+            }
+            if(entry.contains("Dietary")) {
+                fiber = getPercent(entry)[0];
+                fiberP = getPercent(entry)[1];
+            }
+            if(entry.contains("Vitamin A")) {
+                vitaminA = getVitamins(entry)[0];
+                vitaminC = getVitamins(entry)[1];
+            }
+            if(entry.contains("Calcium")) {
+                calcium = getVitamins(entry)[0];
+                iron = getVitamins(entry)[1];
             }
         }
   
