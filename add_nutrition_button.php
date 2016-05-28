@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: Easy Nutrition Label
+Plugin Name: FoodParser
 Description: Easily add nutrition labels to your Wordpress posts from Google or Calorie Count.
 Author: Elaine Lin
 Author URI: http://www.foodparsed.com
