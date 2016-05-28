@@ -30,3 +30,13 @@ https://www.caloriecount.com/cc/recipe_analysis.php
 = My nutrition facts aren't showing up correctly.
 
 Is the plug-in activated? Deactivating the plug-in will mangle existing nutrition info.
+
+== Upgrade Notice ==
+
+= 1 =
+* Initial release
+
+== Changelog ==
+
+= 1 =
+* Initial release
