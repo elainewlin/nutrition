@@ -7,7 +7,9 @@ Stable tag: 1
 
 == Description ==
 
-This plugin allows you to add nutrition label to a post. Just click on the pear, and copy/paste the unformatted nutritional information from Calorie Count or Google.
+This plugin allows you to add nutrition label to a post. Just click on the pear, and copy/paste the unformatted nutritional information from Calorie Count or Google. 
+
+See http://foodparsed.com/easy-nutrition-label-plug-in/ for step by step instructions.
 
 == Installation ==
 
@@ -24,3 +26,7 @@ This plugin allows you to add nutrition label to a post. Just click on the pear,
 I recommend using Google or Calorie Count
 
 https://www.caloriecount.com/cc/recipe_analysis.php
+
+= My nutrition facts aren't showing up correctly.
+
+Is the plug-in activated? Deactivating the plug-in will mangle existing nutrition info.

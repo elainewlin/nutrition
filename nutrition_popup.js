@@ -1,8 +1,6 @@
-
 //Adds a button to the TinyMCE toolbar with the exhibit logo
 (function($) { 
 	//pretty sure that this line adds your function to tinymce's plugin list
-
     tinymce.PluginManager.add('nutrition_button', function( editor, url ) {
 	//and this line adds the actual button
 	editor.addButton( 'nutrition_button', { 
@@ -265,6 +263,4 @@
         });
     });
 	}); 
-
-
 })(jQuery);
