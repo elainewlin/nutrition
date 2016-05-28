@@ -248,7 +248,7 @@
                 {
                     type   : 'container',
                     name   : 'container',
-                    html   : 'Copy/paste nutrition label text from <a href="https://www.caloriecount.com/cc/recipe_analysis.php">Calorie Count</a> or Google. Step by step instructions can be found on <a href="http://foodparsed.com/easy-nutrition-label-plug-in/">FoodParsed</a>'
+                    html   : 'Copy/paste nutrition label text from <a href="https://www.caloriecount.com/cc/recipe_analysis.php">Calorie Count</a> or Google. Step by step instructions can be found on <a href="http://foodparsed.com/easy-nutrition-label-plug-in/">FoodParsed</a>.'
                 },
                 {
                     type: 'textbox',
