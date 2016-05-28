@@ -39,11 +39,11 @@
         var num = getNum(parts[0]);
         var percent = getNum(parts[1]);
         return [num, percent];
-
     }
 
     var insertNutrition = function(nutritionString) {
         nutritionString = nutritionString.replace(/,/g,"");
+        calories = 0;
         fat = "0.0";
         fatP = 0;
         saturated = "0.0";
@@ -115,7 +115,7 @@
         }
   
         editor.insertContent(`
-            <table id="nutritionfacts">
+            <table id="nutritionfacts" border="1">
                 <tbody><tr>
                     <td align="center" class="header">Nutrition Facts</td>
                 </tr>
@@ -234,33 +234,36 @@
                     </td>
                 </tr>      
             </tbody></table>
+            Nutrition facts created using <a href="http://foodparsed.com/easy-nutrition-label-plug-in/">Food Parser</a>
             `);
     }
     editor.addCommand( 'plugin_command', function() {
-
-
-            editor.windowManager.open({
-                // Modal settings
-                title: 'Insert nutritional information',
-                width: $( window ).width() * 0.7,
-                // minus head and foot of dialog box
-                height: $( window ).height() * 0.5,
-                inline: 1,
-                id: 'plugin-slug-insert-dialog',
-                body: [
-                    {type: 'textbox',
+        editor.windowManager.open({
+            // Modal settings
+            title: 'Insert nutritional information',
+            width: $( window ).width() * 0.7,
+            // minus head and foot of dialog box
+            height: $( window ).height() * 0.5,
+            inline: 1,
+            id: 'plugin-slug-insert-dialog',
+            body: [
+                {
+                    type   : 'container',
+                    name   : 'container',
+                    html   : 'Copy/paste nutrition label text from <a href="https://www.caloriecount.com/cc/recipe_analysis.php">Calorie Count</a> or Google. Step by step instructions can be found on <a href="http://foodparsed.com/easy-nutrition-label-plug-in/">FoodParsed</a>'
+                },
+                {
+                    type: 'textbox',
                     multiline: true,
-                    minHeight: 200,
+                    minHeight: $( window ).height() * 0.4,
                     name: 'nutrition',
-                    label: 'Paste from Google or Calorie Count'
-                    }
-                ],
-                onsubmit: function(e) {
-                    insertNutrition(e.data.nutrition);
                 }
-            });
-
+            ],
+            onsubmit: function(e) {
+                insertNutrition(e.data.nutrition);
+            }
         });
+    });
 	}); 
 
 
