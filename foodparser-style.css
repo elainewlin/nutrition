@@ -1,0 +1,35 @@
+#foodparser_nutrition {
+    width:50%;
+}
+#foodparser_nutrition td { 
+    padding:5px; 
+    padding-top: 0px;
+    padding-bottom:0px;
+}
+#foodparser_nutrition td.foodparser_header { 
+    font-size:20pt; 
+}        
+#foodparser_nutrition div.foodparser_label { 
+    float:left; 
+}
+#foodparser_nutrition div.foodparser_serving { 
+    font-size:10pt; 
+    text-align:center; 
+}
+#foodparser_nutrition div.foodparser_weight { 
+    display:inline; 
+}
+#foodparser_nutrition div.foodparser_dv { 
+    display:inline; 
+    float:right; 
+}
+
+#foodparser_nutrition .foodparser_labellight { 
+    float:left; 
+    padding-left: 10px
+}
+
+#foodparser_nutrition td.foodparser_labellight { 
+    float:right; 
+    padding-left: 10px
+}
