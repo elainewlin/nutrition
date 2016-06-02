@@ -228,7 +228,6 @@
                     </td>
                 </tr>      
             </tbody></table>
-        Nutrition facts created using <a href="http://foodparsed.com/easy-nutrition-label-plug-in/">Food Parser</a>
         `);
     }
     editor.addCommand( 'foodparser_open_modal', function() {
